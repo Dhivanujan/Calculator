@@ -5,9 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #1e1e2e, #2d2d44);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: white;
 }

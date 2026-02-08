@@ -132,24 +132,24 @@ function App() {
         </div>
         <div className="current-operand">{currentOperand || '0'}</div>
       </div>
-      <button className="span-two" onClick={clear}>AC</button>
-      <button onClick={deleteDigit}>DEL</button>
-      <button onClick={() => chooseOperation('/')}>/</button>
+      <button className="span-two function-btn" onClick={clear}>AC</button>
+      <button className="function-btn" onClick={deleteDigit}>DEL</button>
+      <button className="operator-btn" onClick={() => chooseOperation('/')}>÷</button>
       <button onClick={() => appendNumber('1')}>1</button>
       <button onClick={() => appendNumber('2')}>2</button>
       <button onClick={() => appendNumber('3')}>3</button>
-      <button onClick={() => chooseOperation('*')}>*</button>
+      <button className="operator-btn" onClick={() => chooseOperation('*')}>×</button>
       <button onClick={() => appendNumber('4')}>4</button>
       <button onClick={() => appendNumber('5')}>5</button>
       <button onClick={() => appendNumber('6')}>6</button>
-      <button onClick={() => chooseOperation('+')}>+</button>
+      <button className="operator-btn" onClick={() => chooseOperation('+')}>+</button>
       <button onClick={() => appendNumber('7')}>7</button>
       <button onClick={() => appendNumber('8')}>8</button>
       <button onClick={() => appendNumber('9')}>9</button>
-      <button onClick={() => chooseOperation('-')}>-</button>
+      <button className="operator-btn" onClick={() => chooseOperation('-')}>-</button>
       <button onClick={() => appendNumber('.')}>.</button>
       <button onClick={() => appendNumber('0')}>0</button>
-      <button className="span-two" onClick={evaluate}>=</button>
+      <button className="span-two operator-btn" onClick={evaluate}>=</button>
     </div>
   );
 }
