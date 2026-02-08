@@ -75,23 +75,49 @@
 
 /* Specific button styles */
 .operator-btn {
-  background-color: #ff9f0a; /* Modern orange */
-  color: white;
-  font-weight: bold;
+  background: linear-gradient(135deg, #0cebeb, #20e3b2, #29ffc6);
+  color: #000;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .operator-btn:hover {
-  background-color: #ffb340;
+  background: linear-gradient(135deg, #29ffc6, #20e3b2);
+  box-shadow: 0 0 15px rgba(32, 227, 178, 0.5);
 }
 
-.function-btn {
-  background-color: #a5a5a5; /* Modern grey */
-  color: #000;
-  font-weight: bold;
+.control-btn {
+  background: linear-gradient(135deg, #FF416C, #FF4B2B);
+  color: white;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.function-btn:hover {
-  background-color: #d1d1d1;
+.control-btn:hover {
+  background: linear-gradient(135deg, #FF4B2B, #FF416C);
+  box-shadow: 0 0 15px rgba(255, 75, 43, 0.5);
+}
+
+.scientific-btn {
+  background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+  color: white;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.scientific-btn:hover {
+  background: linear-gradient(135deg, #4A00E0, #8E2DE2);
+  box-shadow: 0 0 15px rgba(74, 0, 224, 0.5);
+}
+
+.number-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.number-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 /* Responsiveness */

@@ -192,39 +192,39 @@ function App() {
       </div>
       
       {/* Row 1 */}
-      <button className="function-btn" onClick={() => unaryOperation('√')}>√</button>
-      <button className="function-btn" onClick={clear}>AC</button>
-      <button className="function-btn" onClick={deleteDigit}>DEL</button>
-      <button className="function-btn" onClick={() => unaryOperation('%')}>%</button>
+      <button className="scientific-btn" onClick={() => unaryOperation('√')}>√</button>
+      <button className="control-btn" onClick={clear}>AC</button>
+      <button className="control-btn" onClick={deleteDigit}>DEL</button>
+      <button className="scientific-btn" onClick={() => unaryOperation('%')}>%</button>
       <button className="operator-btn" onClick={() => chooseOperation('/')}>÷</button>
 
       {/* Row 2 */}
-      <button className="function-btn" onClick={() => unaryOperation('x²')}>x²</button>
-      <button onClick={() => appendNumber('7')}>7</button>
-      <button onClick={() => appendNumber('8')}>8</button>
-      <button onClick={() => appendNumber('9')}>9</button>
+      <button className="scientific-btn" onClick={() => unaryOperation('x²')}>x²</button>
+      <button className="number-btn" onClick={() => appendNumber('7')}>7</button>
+      <button className="number-btn" onClick={() => appendNumber('8')}>8</button>
+      <button className="number-btn" onClick={() => appendNumber('9')}>9</button>
       <button className="operator-btn" onClick={() => chooseOperation('*')}>×</button>
 
       {/* Row 3 */}
-      <button className="function-btn" onClick={() => chooseOperation('^')}>x^y</button>
-      <button onClick={() => appendNumber('4')}>4</button>
-      <button onClick={() => appendNumber('5')}>5</button>
-      <button onClick={() => appendNumber('6')}>6</button>
+      <button className="scientific-btn" onClick={() => chooseOperation('^')}>x^y</button>
+      <button className="number-btn" onClick={() => appendNumber('4')}>4</button>
+      <button className="number-btn" onClick={() => appendNumber('5')}>5</button>
+      <button className="number-btn" onClick={() => appendNumber('6')}>6</button>
       <button className="operator-btn" onClick={() => chooseOperation('-')}>-</button>
 
       {/* Row 4 */}
-      <button className="function-btn" onClick={() => unaryOperation('log')}>log</button>
-      <button onClick={() => appendNumber('1')}>1</button>
-      <button onClick={() => appendNumber('2')}>2</button>
-      <button onClick={() => appendNumber('3')}>3</button>
+      <button className="scientific-btn" onClick={() => unaryOperation('log')}>log</button>
+      <button className="number-btn" onClick={() => appendNumber('1')}>1</button>
+      <button className="number-btn" onClick={() => appendNumber('2')}>2</button>
+      <button className="number-btn" onClick={() => appendNumber('3')}>3</button>
       <button className="operator-btn" onClick={() => chooseOperation('+')}>+</button>
 
       {/* Row 5 */}
-      <button className="function-btn" onClick={() => unaryOperation('ln')}>ln</button>
-      <button onClick={() => appendNumber('.')}>.</button>
-      <button onClick={() => appendNumber('0')}>0</button>
-      <button onClick={() => appendConstant(Math.PI)}>π</button>
-      <button className="operator-btn" onClick={evaluate}>=</button>
+      <button className="scientific-btn" onClick={() => unaryOperation('ln')}>ln</button>
+      <button className="number-btn" onClick={() => appendNumber('.')}>.</button>
+      <button className="number-btn" onClick={() => appendNumber('0')}>0</button>
+      <button className="scientific-btn" onClick={() => appendConstant(Math.PI)}>π</button>
+      <button className="span-two operator-btn" style={{gridColumn: 'span 1'}} onClick={evaluate}>=</button>
     </div>
   );
 }
