@@ -6,8 +6,8 @@
   display: grid;
   justify-content: center;
   align-content: center;
-  grid-template-columns: repeat(4, 5rem);
-  grid-template-rows: minmax(6rem, auto) repeat(5, 5rem);
+  grid-template-columns: repeat(5, 4.5rem);
+  grid-template-rows: minmax(6rem, auto) repeat(5, 4.5rem);
   background: rgba(255, 255, 255, 0.05);
   padding: 20px;
   border-radius: 20px;
@@ -97,13 +97,13 @@
 /* Responsiveness */
 @media (max-width: 500px) {
   .calculator-grid {
-    grid-template-columns: repeat(4, 4.5rem);
-    grid-template-rows: minmax(5rem, auto) repeat(5, 4.5rem);
+    grid-template-columns: repeat(5, 3.5rem);
+    grid-template-rows: minmax(5rem, auto) repeat(5, 3.5rem);
     padding: 10px;
   }
   
   .calculator-grid > button {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 3px;
   }
 

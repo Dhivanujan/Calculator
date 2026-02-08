@@ -42,6 +42,19 @@ function App() {
     }
   };
 
+  const appendConstant = (constant) => {
+    if (overwrite) {
+      setCurrentOperand(constant.toString());
+      setOverwrite(false);
+    } else {
+      if (currentOperand === '0' || currentOperand === 'Error') {
+        setCurrentOperand(constant.toString());
+      } else {
+        setCurrentOperand(currentOperand + constant.toString());
+      }
+    }
+  };
+
   // Helper to compute result
   const compute = (prev, current, op) => {
     const p = parseFloat(prev);
@@ -53,18 +66,61 @@ function App() {
       case '+': computation = p + c; break;
       case '-': computation = p - c; break;
       case '*': computation = p * c; break;
+      case '÷': 
       case '/': 
         if (c === 0) return 'Error';
         computation = p / c; 
         break;
+      case '^': computation = Math.pow(p, c); break;
       default: return '';
     }
     
     // rounding
     if(computation !== 'Error') {
-       return (Math.round(computation * 100000000) / 100000000).toString();
+       return (Math.round(computation * 10000000000) / 10000000000).toString();
     }
     return computation;
+  };
+
+  const unaryOperation = (operation) => {
+    if (currentOperand === '' || currentOperand === 'Error') return;
+    const current = parseFloat(currentOperand);
+    if (isNaN(current)) return;
+    
+    let result = 0;
+    switch (operation) {
+      case '√': 
+        if (current < 0) {
+            setCurrentOperand('Error'); 
+            return;
+        }
+        result = Math.sqrt(current); 
+        break;
+      case 'x²': result = Math.pow(current, 2); break;
+      case 'log': 
+        if (current <= 0) {
+           setCurrentOperand('Error');
+           return;
+        }
+        result = Math.log10(current); 
+        break;
+      case 'ln':
+        if (current <= 0) {
+            setCurrentOperand('Error');
+            return;
+         } 
+         result = Math.log(current); 
+         break;
+      case '%': result = current / 100; break;
+      default: return;
+    }
+    
+    if (isNaN(result) || !isFinite(result)) {
+        setCurrentOperand('Error');
+    } else {
+        setCurrentOperand((Math.round(result * 10000000000) / 10000000000).toString());
+    }
+    setOverwrite(true);
   };
 
   const chooseOperation = (op) => {
@@ -108,6 +164,8 @@ function App() {
         appendNumber('.');
       } else if (['+', '-', '*', '/'].includes(e.key)) {
         chooseOperation(e.key);
+      } else if (e.key === '^') {
+        chooseOperation('^');
       } else if (e.key === 'Enter' || e.key === '=') {
         e.preventDefault();
         evaluate();
@@ -132,24 +190,41 @@ function App() {
         </div>
         <div className="current-operand">{currentOperand || '0'}</div>
       </div>
-      <button className="span-two function-btn" onClick={clear}>AC</button>
+      
+      {/* Row 1 */}
+      <button className="function-btn" onClick={() => unaryOperation('√')}>√</button>
+      <button className="function-btn" onClick={clear}>AC</button>
       <button className="function-btn" onClick={deleteDigit}>DEL</button>
+      <button className="function-btn" onClick={() => unaryOperation('%')}>%</button>
       <button className="operator-btn" onClick={() => chooseOperation('/')}>÷</button>
-      <button onClick={() => appendNumber('1')}>1</button>
-      <button onClick={() => appendNumber('2')}>2</button>
-      <button onClick={() => appendNumber('3')}>3</button>
-      <button className="operator-btn" onClick={() => chooseOperation('*')}>×</button>
-      <button onClick={() => appendNumber('4')}>4</button>
-      <button onClick={() => appendNumber('5')}>5</button>
-      <button onClick={() => appendNumber('6')}>6</button>
-      <button className="operator-btn" onClick={() => chooseOperation('+')}>+</button>
+
+      {/* Row 2 */}
+      <button className="function-btn" onClick={() => unaryOperation('x²')}>x²</button>
       <button onClick={() => appendNumber('7')}>7</button>
       <button onClick={() => appendNumber('8')}>8</button>
       <button onClick={() => appendNumber('9')}>9</button>
+      <button className="operator-btn" onClick={() => chooseOperation('*')}>×</button>
+
+      {/* Row 3 */}
+      <button className="function-btn" onClick={() => chooseOperation('^')}>x^y</button>
+      <button onClick={() => appendNumber('4')}>4</button>
+      <button onClick={() => appendNumber('5')}>5</button>
+      <button onClick={() => appendNumber('6')}>6</button>
       <button className="operator-btn" onClick={() => chooseOperation('-')}>-</button>
+
+      {/* Row 4 */}
+      <button className="function-btn" onClick={() => unaryOperation('log')}>log</button>
+      <button onClick={() => appendNumber('1')}>1</button>
+      <button onClick={() => appendNumber('2')}>2</button>
+      <button onClick={() => appendNumber('3')}>3</button>
+      <button className="operator-btn" onClick={() => chooseOperation('+')}>+</button>
+
+      {/* Row 5 */}
+      <button className="function-btn" onClick={() => unaryOperation('ln')}>ln</button>
       <button onClick={() => appendNumber('.')}>.</button>
       <button onClick={() => appendNumber('0')}>0</button>
-      <button className="span-two operator-btn" onClick={evaluate}>=</button>
+      <button onClick={() => appendConstant(Math.PI)}>π</button>
+      <button className="operator-btn" onClick={evaluate}>=</button>
     </div>
   );
 }
